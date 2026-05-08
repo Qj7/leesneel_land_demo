@@ -1,64 +1,75 @@
-import Image from "next/image";
+import { LeadForm } from "@/components/lead-form";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="relative min-h-screen overflow-hidden bg-[#02050f] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(66,92,160,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(66,92,160,0.2)_1px,transparent_1px)] bg-[size:48px_48px] opacity-90 [mask-image:radial-gradient(760px_460px_at_50%_34%,#000_0%,#000_44%,rgba(0,0,0,0.45)_68%,transparent_88%)] [-webkit-mask-image:radial-gradient(760px_460px_at_50%_34%,#000_0%,#000_44%,rgba(0,0,0,0.45)_68%,transparent_88%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-[18%] h-[760px] w-[920px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(30,200,95,0.26)_0%,rgba(30,200,95,0.13)_30%,rgba(38,166,255,0.08)_52%,rgba(0,0,0,0)_72%)] blur-[56px]" />
+
+      <div className="pointer-events-none absolute left-1/2 top-0 z-0 w-[1200px] max-w-[92vw] -translate-x-1/2 pt-5">
+        <h1 className="text-center text-[clamp(64px,10vw,160px)] font-semibold leading-none tracking-tight">
+          <span className="text-[#1ec85f] [text-shadow:0_0_8px_rgba(30,200,95,0.52),0_0_20px_rgba(30,200,95,0.36),0_0_38px_rgba(30,200,95,0.22)]">
+            Lees
+          </span>
+          <span className="text-slate-300 [text-shadow:0_0_22px_rgba(148,163,184,0.3)]">
+            neel
+          </span>
+        </h1>
+      </div>
+
+      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-4xl flex-col items-center px-4 pb-10 pt-36 sm:px-6">
+        <p className="mt-32 mb-8 inline-flex items-center gap-3 rounded-full border border-[#2a385a] bg-[#080d1a]/85 px-5 py-1.5 text-[11px] uppercase tracking-[0.28em] text-slate-300/90">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#1ec85f] shadow-[0_0_12px_rgba(30,200,95,0.9)]" />
+          <span>Открыт сбор заявок на получение раннего доступа</span>
+        </p>
+
+        <h1 className="mx-auto max-w-4xl text-center text-4xl font-semibold leading-[1.07] tracking-tight sm:text-5xl md:text-6xl">
+          Leesneel — дисциплина ребенка-спортсмена,{" "}
+          <span className="bg-[linear-gradient(90deg,#43d07c_0%,#3ed682_10%,#40cf89_20%,#44ca95_30%,#47c59e_40%,#4bbda5_50%,#4abcae_60%,#4ab4b5_70%,#4fafc0_80%,#4ea9c8_90%,#4c9bc5_100%)] bg-clip-text text-transparent">
+            финансовая грамотность и
+          </span>{" "}
+          бизнес-мышление в одной семье
+        </h1>
+
+        <p className="mt-8 max-w-2xl text-center text-base leading-relaxed text-white sm:text-xl">
+          Приложение для семей, где детский спорт превратится в фундамент
+          будущего предпринимателя
+        </p>
+
+        <section className="mt-10 w-full max-w-[480px] rounded-2xl border border-[#2a385a]/80 bg-[#070c1a]/70 p-4 shadow-[0_0_35px_rgba(8,32,58,0.75)] backdrop-blur sm:p-5">
+          <LeadForm />
+        </section>
+
+        <section className="mx-auto mt-10 w-full max-w-[520px] rounded-[24px] border border-[#2a385a]/70 bg-[#070c1a]/70 px-6 py-4 text-center shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur">
+          <p className="text-[10px] uppercase tracking-[0.36em] text-slate-500">
+            По всем вопросам
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-slate-300 sm:gap-x-8">
+            <a
+              href="https://instagram.com/hryhorii.sportvisible"
+              target="_blank"
+              rel="noreferrer"
+              className="whitespace-nowrap transition-colors hover:text-[hsl(142_71%_45%)]"
+            >
+              Instagram @hryhorii.sportvisible
+            </a>
+            <span aria-hidden="true" className="text-slate-600">
+              ·
+            </span>
+            <a
+              href="https://youtube.com/@hryhoriisvb"
+              target="_blank"
+              rel="noreferrer"
+              className="whitespace-nowrap transition-colors hover:text-[hsl(142_71%_45%)]"
+            >
+              YouTube @hryhoriisvb
+            </a>
+          </div>
+        </section>
+
+        <p className="mt-8 text-center text-[10px] uppercase tracking-[0.38em] text-slate-600">
+          Leesneel скоро • от базовых атлетов для базовых атлетов с любовью
+        </p>
       </main>
     </div>
   );
