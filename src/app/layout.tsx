@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,9 +19,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Leesneel | Ранний доступ",
+  title: "Leesneel | Early access",
   description:
-    "Лендинг раннего доступа Leesneel для семей, где спорт, финансовая грамотность и бизнес-мышление идут вместе.",
+    "Leesneel early access landing page for families where sport, financial literacy, and business thinking go hand in hand.",
 };
 
 export default function RootLayout({
@@ -30,10 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ru"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

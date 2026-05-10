@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useLocale } from "@/contexts/locale-context";
 
 type FormState = {
   name: string;
@@ -15,6 +16,7 @@ const INITIAL_FORM: FormState = {
 };
 
 export function LeadForm() {
+  const { t } = useLocale();
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
@@ -46,7 +48,7 @@ export function LeadForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <label className="block">
-        <span className="sr-only">Как к вам обращаться</span>
+        <span className="sr-only">{t.formNameSr}</span>
         <div className="relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -68,14 +70,14 @@ export function LeadForm() {
             required
             value={form.name}
             onChange={(event) => setForm({ ...form, name: event.target.value })}
-            placeholder="Как к вам обращаться"
+            placeholder={t.formNamePlaceholder}
             className="h-13 w-full rounded-xl border border-[#2a385a]/90 bg-[#050915]/90 pl-10 pr-4 text-sm text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-[#1ec85f]/70 focus:ring-2 focus:ring-[#1ec85f]/20"
           />
         </div>
       </label>
 
       <label className="block">
-        <span className="sr-only">Email</span>
+        <span className="sr-only">{t.formEmailSr}</span>
         <div className="relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +107,7 @@ export function LeadForm() {
       </label>
 
       <label className="block">
-        <span className="sr-only">Вид спорта ребенка</span>
+        <span className="sr-only">{t.formSportSr}</span>
         <div className="relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +133,7 @@ export function LeadForm() {
             required
             value={form.sport}
             onChange={(event) => setForm({ ...form, sport: event.target.value })}
-            placeholder="Вид спорта ребенка"
+            placeholder={t.formSportPlaceholder}
             className="h-13 w-full rounded-xl border border-[#2a385a]/90 bg-[#050915]/90 pl-10 pr-4 text-sm text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-[#1ec85f]/70 focus:ring-2 focus:ring-[#1ec85f]/20"
           />
         </div>
@@ -145,25 +147,25 @@ export function LeadForm() {
         >
           <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(43,90,54,0.12)_0%,rgba(17,32,27,0)_22%,rgba(17,32,27,0)_78%,rgba(43,90,54,0.12)_100%)] transition duration-200 group-hover:bg-[linear-gradient(90deg,rgba(86,178,97,0.1)_0%,rgba(17,32,27,0.02)_22%,rgba(17,32,27,0.02)_78%,rgba(86,178,97,0.1)_100%)] group-focus-visible:bg-[linear-gradient(90deg,rgba(86,178,97,0.12)_0%,rgba(17,32,27,0.03)_22%,rgba(17,32,27,0.03)_78%,rgba(86,178,97,0.12)_100%)]" />
           <span className="relative text-sm font-medium tracking-tight text-[#f2f5f9]">
-            {status === "loading" ? "Отправка..." : "Хочу ранний доступ"}
+            {status === "loading" ? t.formSubmitting : t.formSubmit}
           </span>
           <span className="relative text-lg leading-none text-[#56b261]">
             →
           </span>
         </button>
         <p className="mx-auto mt-4 w-fit whitespace-nowrap font-[var(--font-jetbrains-mono)] text-[10px] uppercase tracking-[0.25em] text-[hsl(142.3_71.6%_41.4%)] [text-shadow:0_0_12px_hsl(142_71%_45%_/_0.5)]">
-          ПЕРВЫЕ 50 СЕМЕЙ ПОЛУЧАТ БЕСПЛАТНЫЙ ДОСТУП НАВСЕГДА
+          {t.formPromo}
         </p>
       </div>
 
       {status === "success" && (
         <p className="text-center text-xs text-slate-400">
-          Заявка отправлена. Скоро свяжемся с вами.
+          {t.formSuccess}
         </p>
       )}
       {status === "error" && (
         <p className="text-center text-xs text-slate-400">
-          Ошибка отправки. Попробуйте еще раз.
+          {t.formError}
         </p>
       )}
     </form>
